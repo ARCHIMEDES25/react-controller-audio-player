@@ -1,14 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
-export function secToHHMMSS(timeInSeconds) {
-  const pad = input => (input < 10 ? `0${input}` : `${input}`.slice(0, 2));
-  const time = parseFloat(timeInSeconds).toFixed(3);
-  const hours = Math.floor(time / 36000);
-  const minutes = Math.floor(time / 60) % 60;
-  const seconds = Math.floor(time - minutes * 60);
-  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-}
-
 export default function Player({ src, children }) {
   const [onPlayHead, setOnPlayHead] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -58,6 +49,7 @@ export default function Player({ src, children }) {
   return (
     <Fragment>
       <audio
+        data-testid='audio-element'
         ref={audioRef}
         src={src}
         onTimeUpdate={() => {

@@ -1,11 +1,24 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
-import Player, { secToHHMMSS } from '..';
+import Player from '..';
 import css from './style.css';
 
 import Play from './assets/Play';
 import Pause from './assets/Pause';
+
+// Dummy time formatter
+function secToHHMMSS(timeInSeconds) {
+  if (Number.isNaN(parseFloat(timeInSeconds))) {
+    return 'Not a valid number';
+  }
+  const pad = input => (input < 10 ? `0${input}` : `${input}`.slice(0, 2));
+  const time = parseFloat(timeInSeconds).toFixed(3);
+  const hours = Math.floor(time / 36000);
+  const minutes = Math.floor(time / 60) % 60;
+  const seconds = Math.floor(time - minutes * 60);
+  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+}
 
 const src =
   'http://feedproxy.google.com/~r/thornmorris/~5/SxdFhtf6W1w/jjgo190423_ep581a.mp3';
