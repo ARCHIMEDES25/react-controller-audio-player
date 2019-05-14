@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import Player from '..';
-import css from './style.css';
+
+import css from '../style.css';
 
 import Play from './assets/Play';
 import Pause from './assets/Pause';

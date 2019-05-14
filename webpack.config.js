@@ -1,9 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: { index: './src/index.js', style: './src/style.css' },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
@@ -32,10 +33,15 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       }
     ]
   },
   plugins: [
+    new IgnoreEmitPlugin(['style.js']),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
