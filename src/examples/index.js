@@ -38,7 +38,7 @@ const App = () => (
       duration,
       timeLineRef,
       playHeadRef,
-      playedTime
+      playedTime,
     }) => (
       <Fragment>
         {canPlay ? (

@@ -12,15 +12,13 @@ export default function Player({ src, children }) {
   const timeLineRef = React.createRef();
   const playHeadRef = React.createRef();
 
-  const getElementPosition = element =>
-    element && element.getBoundingClientRect().left;
+  const getElementPosition = element => element && element.getBoundingClientRect().left;
   const getAudioCurrentTime = () => audioRef.current.currentTime;
-  const getTimelineWidth = () =>
-    timeLineRef.current && playHeadRef.current
-      ? timeLineRef.current.offsetWidth - playHeadRef.current.offsetWidth
-      : 0;
+  const getTimelineWidth = () => (timeLineRef.current && playHeadRef.current ?
+    timeLineRef.current.offsetWidth - playHeadRef.current.offsetWidth :
+    0);
 
-  const movePlayHead = e => {
+  const movePlayHead = (e) => {
     const timelineWidth = getTimelineWidth();
 
     const updatedMarginLeft =
@@ -81,7 +79,7 @@ export default function Player({ src, children }) {
         duration,
         timeLineRef,
         playHeadRef,
-        playedTime
+        playedTime,
       })}
     </Fragment>
   );

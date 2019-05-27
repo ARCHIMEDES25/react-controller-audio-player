@@ -1,6 +1,6 @@
 {
   "name": "react-controller-audio-player",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of primitives to build a simple, flexible audio player",
   "main": "dist/index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "test": "jest",
     "build": "webpack-cli --mode production",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "prepare": "npm run lint && npm run test && npm run build"
   },
   "repository": {

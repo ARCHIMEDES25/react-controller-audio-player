@@ -11,7 +11,7 @@ const playerInitialState = {
   onPlayHead: false,
   playing: false,
   playHeadMarginLeft: 0,
-  playedTime: 0
+  playedTime: 0,
 };
 
 afterEach(cleanup);
@@ -47,8 +47,8 @@ describe('Player', () => {
         movePlayHead: expect.any(Function),
         setOnPlayHead: expect.any(Function),
         timeLineRef: expect.any(Object),
-        playHeadRef: expect.any(Object)
-      })
+        playHeadRef: expect.any(Object),
+      }),
     );
   });
 
@@ -60,36 +60,36 @@ describe('Player', () => {
 
     expect(children).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        playing: true
-      })
+        playing: true,
+      }),
     );
 
     fireEvent.ended(audio);
     expect(children).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        playing: false
-      })
+        playing: false,
+      }),
     );
 
     fireEvent.play(audio);
     expect(children).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        playing: true
-      })
+        playing: true,
+      }),
     );
 
     fireEvent.pause(audio);
     expect(children).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        playing: false
-      })
+        playing: false,
+      }),
     );
 
     fireEvent.canPlayThrough(audio);
     expect(children).toHaveBeenLastCalledWith(
       expect.objectContaining({
-        canPlay: true
-      })
+        canPlay: true,
+      }),
     );
   });
 });

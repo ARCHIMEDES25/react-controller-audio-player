@@ -18,7 +18,14 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import Player from 'react-controller-audio-player';
 // sample style
-import css from 'react-controller-audio-player/dist/style.css';
+import from 'react-controller-audio-player/dist/style.css';
+
+const sampleClassNames = {
+  container: 'container',
+  timeLine: 'timeLine',
+  playHead: 'playHead',
+  timeLabel: 'timeLabel'
+};
 
 const Play = () => (
   <svg height='50px' version='1.1' viewBox='0 0 20 20' width='50px'>
@@ -77,13 +84,13 @@ const App = () => (
     }) => (
       <Fragment>
         {canPlay ? (
-          <div className={css.container}>
+          <div className={sampleClassNames.container}>
             <div onClick={playing ? pause : play}>
               {playing ? <Pause /> : <Play />}
             </div>
-            <span className={css.timeLabel}>{secToHHMMSS(playedTime)}</span>
+            <span className={sampleClassNames.timeLabel}>{secToHHMMSS(playedTime)}</span>
             <div
-              className={css.timeLine}
+              className={sampleClassNames.timeLine}
               ref={timeLineRef}
               onClick={movePlayHead}
               onMouseMove={e => onPlayHead && movePlayHead(e)}
@@ -92,11 +99,11 @@ const App = () => (
             >
               <div
                 ref={playHeadRef}
-                className={css.playHead}
+                className={sampleClassNames.playHead}
                 style={{ marginLeft: playHeadMarginLeft }}
               />
             </div>
-            <span className={css.timeLabel}>{secToHHMMSS(duration)}</span>
+            <span className={sampleClassNames.timeLabel}>{secToHHMMSS(duration)}</span>
           </div>
         ) : (
           <span>Unable to play audio</span>
